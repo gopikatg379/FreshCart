@@ -1,0 +1,60 @@
+/* SignIn.css */
+
+.signin-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #f8f9fa;
+    background-image: url('../images/bg.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    width: 100%; 
+  }
+  
+  .signin-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 350px;
+    border: 1px solid #ccc; /* Border added */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group2 {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group2 label {
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+    display: block;
+  }
+  
+  .form-group2 input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .submit-btn2 {
+    background-color: #28a745;
+    color: white;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .submit-btn2:hover {
+    background-color: #218838;
+  }
+
+  

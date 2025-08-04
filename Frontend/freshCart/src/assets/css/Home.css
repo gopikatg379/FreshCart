@@ -1,0 +1,29 @@
+.main-container {
+    margin-left: 50px;
+    margin-right: 10px;
+    width: calc(100% - 100px); /* 90 + 60 = 150 */
+  }
+
+  @media (max-width: 1024px) {
+    .main-container {
+      margin-left: 60px;
+      margin-right: 40px;
+      width: calc(100% - 100px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .main-container {
+      margin-left: 30px;
+      margin-right: 20px;
+      width: calc(100% - 50px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .main-container {
+      margin-left: 15px;
+      margin-right: 15px;
+      width: calc(100% - 30px);
+    }
+  }

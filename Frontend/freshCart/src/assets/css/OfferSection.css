@@ -1,0 +1,163 @@
+/* OfferSection.css */
+
+.offers-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.offer-card {
+  background-color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 48%;
+  min-height: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.offer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.offer-card.fruits {
+  background-image: url("/src/assets/images/fruit.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left: 70px;
+}
+
+.offer-card.buns {
+  background-image: url("/src/assets/images/bun.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-right: 70px;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+}
+
+.offer-text {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.offer-text h2 {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.offer-text p {
+  margin: 10px 0;
+  font-size: 18px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.offer-text p strong {
+  font-size: 20px;
+}
+
+.shop-btn {
+  background-color: white;
+  color: #0d1f2d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+
+.shop-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .offers-container {
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+  }
+  .offer-card.fruits,
+  .offer-card.buns {
+      margin: 0;
+  }
+  .offer-card {
+      width: 100%;
+      min-height: 180px;
+      padding: 20px;
+  }
+
+  .offer-text h2 {
+      font-size: 20px;
+  }
+
+  .offer-text p {
+      font-size: 16px;
+  }
+
+  .offer-text p strong {
+      font-size: 18px;
+  }
+
+  .shop-btn {
+      padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .offers-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px; /* Padding on all sides */
+  }
+
+  .offer-card {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    margin: 0 !important; 
+  }
+
+  .offer-card.fruits,
+  .offer-card.buns {
+    margin: 0 !important; 
+  }
+
+  .offer-text h2 {
+    font-size: 18px;
+  }
+
+  .offer-text p {
+    font-size: 14px;
+  }
+
+  .offer-text p strong {
+    font-size: 16px;
+  }
+}
+

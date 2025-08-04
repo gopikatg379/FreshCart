@@ -1,0 +1,128 @@
+.menubar-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 300px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e8e8e8;
+  }
+  
+  .category-section {
+    margin-bottom: 30px;
+  }
+  
+  .category-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .category-item {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1b1b1b;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .category-item:hover {
+    color: green;
+    text-decoration: underline;
+  }
+  
+  .promo-card1 {
+    background: url('/src/assets/images/veg.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 280px;
+  }
+  
+  .promo-card1 h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .promo-card1 p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .shop-btn {
+    padding: 10px 20px;
+    background-color: #00b83d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .shop-btn:hover {
+    background-color: #5efd6b;
+  }
+  /* Responsive for tablets and below */
+@media (max-width: 768px) {
+  .menubar-container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .promo-card1 {
+    height: 220px;
+    padding: 20px;
+  }
+
+  .promo-card1 h3 {
+    font-size: 18px;
+  }
+
+  .promo-card1 p {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .shop-btn {
+    padding: 8px 16px;
+  }
+}
+
+/* Responsive for mobile devices */
+@media (max-width: 480px) {
+  .menubar-container {
+    padding: 10px;
+  }
+
+  .category-title {
+    font-size: 18px;
+  }
+
+  .category-item {
+    font-size: 14px;
+  }
+
+  .promo-card1 {
+    height: 180px;
+    padding: 15px;
+    background-position: center;
+  }
+
+  .promo-card1 h3 {
+    font-size: 16px;
+  }
+
+  .promo-card1 p {
+    font-size: 12px;
+  }
+
+  .shop-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}

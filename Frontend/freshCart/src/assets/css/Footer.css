@@ -1,0 +1,80 @@
+.footer {
+    background-color: #f1f5f9;
+    padding: 40px 60px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .footer h4 {
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer ul li {
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+  
+  .footer-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+  }
+  
+  .footer-bottom {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+  }
+  
+  .payment-partners .partners-icons img {
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .footer-right p {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .app-links img {
+    height: 36px;
+    margin-right: 10px;
+    border-radius: 6px;
+    width: 140px;
+  }
+  
+  .footer-bottom-text {
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-bottom-text span {
+    color: green;
+  }
+  
+  .social-icons button {
+    margin-left: 8px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
