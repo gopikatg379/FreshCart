@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // Function to fetch user data using token
+
   const fetchUser = async (token) => {
     try {
       const res = await axios.get("http://127.0.0.1:8000/get_user", {
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("access");
     if (token) {
-      fetchUser(token); // ✅ fetch latest user data on app load
+      fetchUser(token); 
     }
   }, []);
 

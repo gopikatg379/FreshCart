@@ -35,7 +35,7 @@ const Details = () => {
           navigate('/signin')
           return
         }
-        await axios.post(`http://127.0.0.1:8000/add_cart/${id}`,{
+        await axios.post(`http://127.0.0.1:8000/add_cart/${id}`,{},{
           headers:{
             Authorization:`Bearer ${token}`
           }
@@ -43,7 +43,13 @@ const Details = () => {
         alert("Product added to cart successfully!")
       }catch(error){
         console.log("There was an error",error)
+        if (error.response && error.response.status === 401) {
+        // Token invalid or expired
+        localStorage.removeItem('access')  // clear old token
+        navigate('/signin')
+    }
       }
+      
     }
     useEffect(()=>{
         fetchData(),
