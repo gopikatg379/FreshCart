@@ -1,0 +1,30 @@
+# Python virtual environments
+env/
+venv/
+Backend/env/
+
+# Django cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+*.env
+
+# Media and static generated files
+media/
+staticfiles/
+
+# Node.js dependencies
+node_modules/
+build/
+dist/
+
+# VS Code settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
