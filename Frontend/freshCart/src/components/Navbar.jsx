@@ -16,7 +16,9 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [departments, setDepartments] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-
+  const [searchTerm, setSearchTerm] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  
   const megaMenuCategories = [
     { title: "Dairy, Bread & Eggs", items: ["Butter", "Milk Drinks", "Curd & Yogurt", "Eggs", "Buns & Bakery", "Cheese", "Condensed Milk", "Dairy Products"] },
     { title: "Breakfast & Instant Food", items: ["Breakfast Cereal", "Noodles, Pasta & Soup", "Frozen Veg Snacks", "Frozen Non-Veg Snacks", "Vermicelli", "Instant Mixes", "Butter", "Fruit and Juices"] },
@@ -47,6 +49,25 @@ const Navbar = () => {
       console.log("Error fetching cart items:", err);
     }
   };
+  const handleSearchChange = async (query) => {
+    setSearchTerm(query);
+    if (query.trim().length > 1) {
+      try {
+        const res = await axios.get(`http://127.0.0.1:8000/search_products?search=${query}`);
+        setSuggestions(res.data.slice(0, 5)); // show top 5
+      } catch (err) {
+        console.log("Search error:", err);
+      }
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const handleSearchSubmit = (query) => {
+    if (!query) return;
+    setSuggestions([]);
+    navigate(`/search/${query}`);
+  };
 
   useEffect(() => { fetchCategories(); }, []);
   useEffect(() => { fetchCartItems(); }, [user]);
@@ -62,9 +83,31 @@ const Navbar = () => {
             <h1 className="logo"><FaShoppingCart className="logo-icon" /> FreshCart</h1>
             <div className="search-location-container">
               <div className="search-bar">
-                <input type="text" placeholder="Search for products" className="search-input" />
-                <button className="search-btn"><FaSearch /></button>
-              </div>
+              <input
+                type="text"
+                placeholder="Search for products"
+                className="search-input"
+                value={searchTerm}
+                onChange={(e) => handleSearchChange(e.target.value)}
+              />
+              <button className="search-btn" onClick={() => handleSearchSubmit(searchTerm)}>
+                <FaSearch />
+              </button>
+
+              {suggestions.length > 0 && (
+                <ul className="suggestions-dropdown">
+                  {suggestions.map((item, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleSearchSubmit(item.product_name)}
+                    >
+                      {item.product_name}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
               <button className="location-btn"><FaMapMarkerAlt /> Location</button>
             </div>
           </div>

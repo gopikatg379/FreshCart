@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.conf import settings
+import numpy as np
+from sentence_transformers import SentenceTransformer
+import pickle
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
 
 
 # Create your models here.
@@ -10,6 +15,8 @@ class Category(models.Model):
     category_name = models.CharField(max_length=50)
     category_image = models.ImageField(upload_to='category')
 
+    def __str__(self):
+        return self.category_name
     class Meta:
         db_table = 'category_table'
 
@@ -42,11 +49,18 @@ class ProductModel(models.Model):
     product_image = models.ImageField(upload_to='products')
     product_details = models.TextField()
     average_rating = models.FloatField(default=0.0)
+    embedding = models.BinaryField(null=True, blank=True)
 
     @property
     def calculated_average_rating(self):
         ratings = ProductRating.objects.filter(product=self)
         return sum(r.rating for r in ratings) / ratings.count() if ratings.exists() else 0.0
+
+    def save(self, *args, **kwargs):
+        text = f"{self.product_name} {self.product_category} {self.product_details}"
+        embedding = model.encode(text)
+        self.embedding = pickle.dumps(embedding)
+        super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'product_table'
@@ -93,7 +107,7 @@ class Cart(models.Model):
     cart_id = models.AutoField(primary_key=True)
     cart_item = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    user = models.ForeignKey(CustomModel, null=True,on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomModel, null=True, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'cart_table'

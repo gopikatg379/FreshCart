@@ -12,5 +12,6 @@ urlpatterns = [
     path('register',add_user,name='register'),
     path('login',user_login,name='login'),
     path('get_user',user_details,name='get_user'),
-    path('view_cart',view_cart,name='view_cart')
+    path('view_cart',view_cart,name='view_cart'),
+    path('search_products',search_products,name='search_products')
 ]

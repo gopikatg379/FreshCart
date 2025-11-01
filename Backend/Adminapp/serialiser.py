@@ -21,7 +21,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductModel
-        fields = '__all__'
+        fields = ['product_id','vendor','product_category','product_name','product_price','product_weight','product_image','product_details','average_rating']
 
 
 class BadgeSerializer(serializers.ModelSerializer):

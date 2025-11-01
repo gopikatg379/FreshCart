@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import SignIn from "./components/SignIn"
 import Dashboard from "./components/Dashboard"
+import SearchResults from "./components/SearchResults"
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
@@ -19,7 +20,8 @@ function App() {
         <Route path='/details/:id' element={<Details/>}></Route>
         <Route path="/signup" element={<SignUp/>}></Route>
         <Route path="/signin" element={<SignIn/>}></Route>
-        <Route path="/admin" element={<Dashboard/>}></Route>
+        <Route path="/admin/dashboard" element={<Dashboard/>}></Route>
+        <Route path="/search/:query" element={<SearchResults />} />
       </Routes>
       {!isAdminRoute && <Footer />}
     </>
