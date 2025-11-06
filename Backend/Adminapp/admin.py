@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,ProductModel,ProductWeight,FeaturedProduct,FeaturedBadge,BestDeal
+from .models import *
 # Register your models here.
 admin.site.register(Category)
 admin.site.register(ProductModel)

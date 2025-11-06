@@ -6,13 +6,13 @@ from .models import *
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ['category_id','category_name','category_image']
 
 
 class ProductWeightSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductWeight
-        fields = '__all__'
+        fields = ['product_weight_id','product_weight']
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -27,7 +27,7 @@ class ProductSerializer(serializers.ModelSerializer):
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = FeaturedBadge
-        fields = '__all__'
+        fields = ['badge_id','badge_name']
 
 
 class FeaturedSerializer(serializers.ModelSerializer):
@@ -36,7 +36,7 @@ class FeaturedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FeaturedProduct
-        fields = '__all__'
+        fields = ['featured_product_id','featured_items','our_price','badge']
 
 
 class DealSerializer(serializers.ModelSerializer):

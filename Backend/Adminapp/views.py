@@ -29,6 +29,7 @@ def add_category(request):
 @api_view(['GET'])
 def get_all_categories(request):
     categories = Category.objects.all()
+    print(categories)
     serializer_obj = CategorySerializer(categories, many=True)
     return Response(serializer_obj.data)
 
