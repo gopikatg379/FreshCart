@@ -7,11 +7,8 @@ from .models import *
 from .serialiser import *
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-import numpy as np
-import pickle
-from sentence_transformers import SentenceTransformer
 from django.db.models import Q
-model = SentenceTransformer('all-MiniLM-L6-v2')
+
 
 
 # Create your views here.
@@ -139,30 +136,22 @@ def user_details(request):
 
 @api_view(['GET'])
 def search_products(request):
-    query = request.GET.get('search', '')
+    query = request.GET.get('search', '').strip()
     print(query)
     if not query:
+        # No search term — return all products
         products = ProductModel.objects.all()
     else:
-        print("product")
+        # Step 1: find matching products
         matched_products = ProductModel.objects.filter(
             Q(product_name__icontains=query) | Q(product_details__icontains=query)
         )
-        matched_categories = matched_products.values_list('product_category', flat=True).distinct()
-        products_queryset = ProductModel.objects.filter(product_category__in=matched_categories)
-        products_with_scores = []
-        query_embedding = model.encode(query)
-        for product in products_queryset:
-            if product.embedding:
-                product_embedding = pickle.loads(product.embedding)
-                similarity = np.dot(query_embedding, product_embedding) / (
-                        np.linalg.norm(query_embedding) * np.linalg.norm(product_embedding)
-                )
-                products_with_scores.append((product, similarity))
 
-        # Sort by similarity
-        products_with_scores.sort(key=lambda x: x[1], reverse=True)
-        products = [p[0] for p in products_with_scores]
+        # Step 2: get categories of matched products
+        matched_categories = matched_products.values_list('product_category', flat=True).distinct()
+
+        # Step 3: include all products in those categories
+        products = ProductModel.objects.filter(product_category__in=matched_categories)
 
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)

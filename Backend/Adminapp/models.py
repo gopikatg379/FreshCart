@@ -1,12 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.conf import settings
-import numpy as np
-from sentence_transformers import SentenceTransformer
-import pickle
-
-model = SentenceTransformer('all-MiniLM-L6-v2')
-
 
 # Create your models here.
 
@@ -56,11 +50,6 @@ class ProductModel(models.Model):
         ratings = ProductRating.objects.filter(product=self)
         return sum(r.rating for r in ratings) / ratings.count() if ratings.exists() else 0.0
 
-    def save(self, *args, **kwargs):
-        text = f"{self.product_name} {self.product_category} {self.product_details}"
-        embedding = model.encode(text)
-        self.embedding = pickle.dumps(embedding)
-        super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'product_table'
