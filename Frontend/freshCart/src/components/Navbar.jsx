@@ -182,7 +182,7 @@ const Navbar = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="mega-menu-offer" style={{ backgroundImage: `url(${img1})`, backgroundSize: 'cover', height: '300px' }}>
+                  <div className="mega-menu-offer" style={{ backgroundImage: `url(/images/img1.jpg)`, backgroundSize: 'cover', height: '300px' }}>
                     <div className="offer-overlay">
                       <p>Don't miss <span style={{ color: 'white' }}>this</span> offer today.</p>
                       <h3>25% Off</h3>
