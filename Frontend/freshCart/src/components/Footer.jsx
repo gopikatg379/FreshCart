@@ -81,19 +81,19 @@ const Footer = () => {
         <div className="payment-partners">
           <strong>Payment Partners</strong>
           <div className="partners-icons" style={{marginTop:'10px'}}>
-            <img src="src/assets/images/amazon.png" alt="Amazon Pay" />
-            <img src="src/assets/images/american.png" alt="American Express" />
-            <img src="src/assets/images/mastercard.jpg" alt="MasterCard" />
-            <img src="src/assets/images/paypal.webp" alt="PayPal" />
-            <img src="src/assets/images/visa.png" alt="Visa" />
+            <img src="/images/amazon.png" alt="Amazon Pay" />
+            <img src="/images/american.png" alt="American Express" />
+            <img src="/images/mastercard.jpg" alt="MasterCard" />
+            <img src="/images/paypal.webp" alt="PayPal" />
+            <img src="/images/visa.png" alt="Visa" />
           </div>
         </div>
 
         <div className="footer-right">
           <p>Get deliveries with FreshCart</p>
           <div className="app-links">
-            <img src="src/assets/images/appstore.png" alt="App Store" />
-            <img src="src/assets/images/playstore.jpg" alt="Google Play" />
+            <img src="/images/appstore.png" alt="App Store" />
+            <img src="/images/playstore.jpg" alt="Google Play" />
           </div>
         </div>
       </div>

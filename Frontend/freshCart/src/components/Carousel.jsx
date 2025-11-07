@@ -24,7 +24,7 @@ const Carousel = () => {
       <SwiperSlide>
         <div className="carousel-slide">
           <img
-            src="/src/assets/images/img5.jpg"
+            src="/images/img5.jpg"
             alt="Grocery Sale"
             className="carousel-image"
           />
@@ -40,7 +40,7 @@ const Carousel = () => {
       <SwiperSlide>
         <div className="carousel-slide">
           <img
-            src="/src/assets/images/img3.jpg"
+            src="/images/img3.jpg"
             alt="Fresh Fruits"
             className="carousel-image"
           />
