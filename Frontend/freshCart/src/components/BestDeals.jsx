@@ -80,7 +80,7 @@ const BestDeals = () => {
           const countdown = deal.countdown || { days: 0, hours: 0, minutes: 0, seconds: 0 };
           return (
             <div className="product-card2" key={index}>
-              <img src={item.product_image} alt={item.product_name} className="product-image1" />
+              <img src={item.product_image.replace('/media/', '')} alt={item.product_name} className="product-image1" />
               <p className="category1">{item.product_category.category_name}</p>
               <h4 className="product-name1">{item.product_name}</h4>
               <p className="vendor1">By {item.vendor}</p>

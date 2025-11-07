@@ -50,7 +50,7 @@ const Category = () => {
       <div className="category-scroll" ref={scrollRef}>
         {data.map((category, index) => (
           <div key={index} className="category-card" onClick={() => navigate(`/details/${category.category_id}`)}>
-            <img src={category.category_image} alt={category.category_name} />
+            <img src={category.category_image.replace('/media/', '')} alt={category.category_name} />
             <p>{category.category_name}</p>
           </div>
         ))}
