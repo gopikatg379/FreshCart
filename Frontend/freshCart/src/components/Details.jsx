@@ -69,7 +69,7 @@ const Details = () => {
     <div className="product-grid">
       {data.map((product, index) => (
         <div className="product-card1" key={index}>
-          <img src={`${config.BASE_URL}${product.product_image}`} alt={product.flower_name} />
+          <img src={product.product_image} alt={product.flower_name} />
           <p className="category-text">{cat.category_name}</p>
           <h3>{product.product_name}</h3>
           <div className="rating">

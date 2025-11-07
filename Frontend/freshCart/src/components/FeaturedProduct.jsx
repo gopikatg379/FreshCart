@@ -47,7 +47,7 @@ const FeaturedProduct = () => {
       <span className={item?.badge?.badge_name ? 'badge2' : ''}>
         {item?.badge?.badge_name ?? ''}
       </span>
-      <img src={`${config.BASE_URL}${product.product_image}`} alt={product.product_name} className="product-img" />
+      <img src={product.product_image} alt={product.product_name} className="product-img" />
       <p className="category">{product.product_category?.category_name || 'No Category'}</p>
       <h3 className="product-name">{product.product_name}</h3>
       <div className="rating">

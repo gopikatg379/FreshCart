@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     "corsheaders",
+    'cloudinary',
+    'cloudinary_storage',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -152,3 +154,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://freshcarton.onrender.com"
 ]
 AUTH_USER_MODEL = "Adminapp.CustomModel"
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dn1knnudm',
+    'API_KEY': '469315845734452',
+    'API_SECRET': 'GnzVj37XVHcP_pLpRPcd_c3H1d0'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

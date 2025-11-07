@@ -27,7 +27,7 @@ const SearchResults = () => {
       <div className="product-grid">
         {products.map((p) => (
           <div className="product-card" key={p.id}>
-            <img src={`${config.BASE_URL}${p.product_image}`} alt={p.product_name} />
+            <img src={p.product_image} alt={p.product_name} />
             <p className="category">{p.product_category?.category_name || 'No Category'}</p>
             <h3 className="product-name">{p.product_name}</h3>
             <div className="rating">

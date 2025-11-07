@@ -8,6 +8,10 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ['category_id','category_name','category_image']
 
+    def get_category_image(self, obj):
+        if obj.category_image:
+            return obj.category_image.url
+        return None
 
 class ProductWeightSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,6 +27,10 @@ class ProductSerializer(serializers.ModelSerializer):
         model = ProductModel
         fields = ['product_id','vendor','product_category','product_name','product_price','product_weight','product_image','product_details','average_rating']
 
+    def get_product_image(self, obj):
+        if obj.product_image:
+            return obj.product_image.url
+        return None
 
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:

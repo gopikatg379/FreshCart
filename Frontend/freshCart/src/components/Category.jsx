@@ -14,6 +14,7 @@ const Category = () => {
     try {
       const response = await axios.get(`${config.BASE_URL}/get_category`);
       setData(response.data);
+      console.log(response.data)
     } catch (error) {
       console.log("There was an error", error);
     }
@@ -49,7 +50,7 @@ const Category = () => {
       <div className="category-scroll" ref={scrollRef}>
         {data.map((category, index) => (
           <div key={index} className="category-card" onClick={() => navigate(`/details/${category.category_id}`)}>
-            <img src={`${config.BASE_URL}${category.category_image}`} alt={category.category_name} />
+            <img src={category.category_image} alt={category.category_name} />
             <p>{category.category_name}</p>
           </div>
         ))}
