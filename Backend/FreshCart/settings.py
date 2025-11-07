@@ -99,10 +99,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'freshcart',
-            'USER': 'postgres',
-            'PASSWORD': 'gop1999ika',
-            'HOST': 'localhost',
+            'NAME': 'freshcart_ulrp',
+            'USER': 'freshcart_ulrp_user',
+            'PASSWORD': 'As7EnyanfG5CVDghMLFPT38hk0zXEyST',
+            'HOST': 'dpg-d46727jipnbc73biq2q0-a.oregon-postgres.render.com',
             'PORT': '5432',
         }
     }
