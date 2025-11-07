@@ -35,7 +35,7 @@
 }
 
 .offer-card.fruits {
-  background-image: url("/src/assets/images/fruit.jpg");
+  background-image: url("/images/fruit.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -43,7 +43,7 @@
 }
 
 .offer-card.buns {
-  background-image: url("/src/assets/images/bun.jpg");
+  background-image: url("/images/bun.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
