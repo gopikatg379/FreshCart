@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FaSearch, FaMapMarkerAlt, FaHeart, FaShoppingCart, FaTh, FaChevronDown, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
 import "../assets/css/Navbar.css";
-import img1 from '../assets/images/img1.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 import axios from 'axios';
