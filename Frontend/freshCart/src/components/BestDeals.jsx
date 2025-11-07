@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../assets/css/BestDeals.css'
 import { useNavigate } from 'react-router-dom';
+import config from "../config"; 
 const BestDeals = () => {
   const [deals, setDeals] = useState([]);
   const navigate = useNavigate()
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/get_best");
+      const res = await axios.get(`${config.BASE_URL}/get_best`);
       const currentTime = new Date().getTime();
 
       const updatedDeals = res.data.map(deal => {
@@ -27,7 +28,7 @@ const BestDeals = () => {
             navigate('/signin')
             return
           }
-          await axios.post(`http://127.0.0.1:8000/add_cart/${id}`,{
+          await axios.post(`${config.BASE_URL}/add_cart/${id}`,{
             headers:{
               Authorization:`Bearer ${token}`
             }
@@ -79,7 +80,7 @@ const BestDeals = () => {
           const countdown = deal.countdown || { days: 0, hours: 0, minutes: 0, seconds: 0 };
           return (
             <div className="product-card2" key={index}>
-              <img src={`http://127.0.0.1:8000${item.product_image}`} alt={item.product_name} className="product-image1" />
+              <img src={`${config.BASE_URL}${item.product_image}`} alt={item.product_name} className="product-image1" />
               <p className="category1">{item.product_category.category_name}</p>
               <h4 className="product-name1">{item.product_name}</h4>
               <p className="vendor1">By {item.vendor}</p>

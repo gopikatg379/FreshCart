@@ -6,6 +6,7 @@ import Navbar from './Navbar'
 import '../assets/css/Details.css'
 import Footer from './Footer'
 import {FaRupeeSign } from "react-icons/fa";
+import config from "../config"; 
 
 const Details = () => {
     const {id}=useParams()
@@ -14,7 +15,7 @@ const Details = () => {
     const [data,setData]=useState([])
     const fetchCategory = async()=>{
         try{
-            const response = await axios.get(`http://127.0.0.1:8000/one_category/${id}`)
+            const response = await axios.get(`${config.BASE_URL}/one_category/${id}`)
             setCat(response.data)
         }catch(error){
             console.log("There was an error",error)
@@ -22,7 +23,7 @@ const Details = () => {
     }
     const fetchData=async()=>{
         try{
-            const response = await axios.get(`http://127.0.0.1:8000/get_category_product/${id}`)
+            const response = await axios.get(`${config.BASE_URL}/get_category_product/${id}`)
             setData(response.data)
         }catch(error){
             console.log("There was an error",error)
@@ -35,7 +36,7 @@ const Details = () => {
           navigate('/signin')
           return
         }
-        await axios.post(`http://127.0.0.1:8000/add_cart/${id}`,{},{
+        await axios.post(`${config.BASE_URL}/add_cart/${id}`,{},{
           headers:{
             Authorization:`Bearer ${token}`
           }
@@ -68,7 +69,7 @@ const Details = () => {
     <div className="product-grid">
       {data.map((product, index) => (
         <div className="product-card1" key={index}>
-          <img src={`http://127.0.0.1:8000${product.product_image}`} alt={product.flower_name} />
+          <img src={`${config.BASE_URL}${product.product_image}`} alt={product.flower_name} />
           <p className="category-text">{cat.category_name}</p>
           <h3>{product.product_name}</h3>
           <div className="rating">

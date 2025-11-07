@@ -5,6 +5,7 @@ import img1 from '../assets/images/img1.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 import axios from 'axios';
+import config from "../config";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Navbar = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/get_category');
+      const res = await axios.get(`${config.BASE_URL}/get_category`);
       setDepartments(res.data);
     } catch (err) {
       console.log("Error fetching categories:", err);
@@ -41,7 +42,7 @@ const Navbar = () => {
       if (!user) return;
       const token = localStorage.getItem('access');
       if (!token) return;
-      const res = await axios.get('http://127.0.0.1:8000/view_cart', {
+      const res = await axios.get(`${config.BASE_URL}/view_cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCartItems(res.data);
@@ -53,7 +54,7 @@ const Navbar = () => {
     setSearchTerm(query);
     if (query.trim().length > 1) {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/search_products?search=${query}`);
+        const res = await axios.get(`${config.BASE_URL}/search_products?search=${query}`);
         setSuggestions(res.data.slice(0, 5)); // show top 5
       } catch (err) {
         console.log("Search error:", err);
@@ -119,11 +120,11 @@ const Navbar = () => {
                   <div className="icon-container"><FaHeart /> <span className="badge">5</span></div>
 
                   <div className="user-icon-container" onClick={() => setShowDropdown(!showDropdown)}>
-                    {user.user_image ? <img src={`http://127.0.0.1:8000${user.user_image}`} alt="User" className="usericon1" /> : <div className="placeholder-icon" />}
+                    {user.user_image ? <img src={`${config.BASE_URL}${user.user_image}`} alt="User" className="usericon1" /> : <div className="placeholder-icon" />}
                     {showDropdown && (
                       <div className="profile-dropdown">
                         <div className="profile-header">
-                          <img src={`http://127.0.0.1:8000${user.user_image}`} alt="Profile" className="dropdown-avatar" />
+                          <img src={`${config.BASE_URL}${user.user_image}`} alt="Profile" className="dropdown-avatar" />
                           <div><h4>{user.username}</h4><p>{user.email}</p></div>
                         </div>
                         <hr />

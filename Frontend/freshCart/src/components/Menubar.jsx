@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../assets/css/Menubar.css'
+import config from "../config";
 const Menubar = () => {
     const [data,setData]=useState([])
     const fetchCategory = async()=>{
         try{
-            const response = await axios.get('http://127.0.0.1:8000/get_category')
+            const response = await axios.get(`${config.BASE_URL}/get_category`)
             setData(response.data)
         }catch(error){
             console.log("There was an error",error)

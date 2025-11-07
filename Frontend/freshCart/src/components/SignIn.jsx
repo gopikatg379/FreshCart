@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import '../assets/css/SignIn.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext'; // ✅ import context
-
+import { AuthContext } from '../context/AuthContext'; 
+import config from "../config";
 const SignIn = () => {
   const navigate = useNavigate();
-  const { setUser } = useContext(AuthContext); // ✅ get setUser from context
+  const { setUser } = useContext(AuthContext); 
 
   const [user, setUserInput] = useState({
     username: '',
@@ -26,7 +26,7 @@ const SignIn = () => {
   const loginUser = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://127.0.0.1:8000/login', user);
+      const res = await axios.post(`${config.BASE_URL}/login`, user);
       console.log('Login successful, tokens:', res.data);
       localStorage.setItem('access', res.data.access);
       localStorage.setItem('refresh', res.data.refresh);

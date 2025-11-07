@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../assets/css/SignUp.css';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import config from "../config";
 const SignUp = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState({
@@ -26,7 +27,7 @@ const SignUp = () => {
   const addUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://127.0.0.1:8000/register', user, {
+      await axios.post(`${config.BASE_URL}/register`, user, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

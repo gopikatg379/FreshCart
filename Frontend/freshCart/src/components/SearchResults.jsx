@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/SearchResults.css";
 import { FaPlus,FaRupeeSign } from "react-icons/fa";
+import config from "../config";
+
 const SearchResults = () => {
   const { query } = useParams();
   const [products, setProducts] = useState([]);
@@ -10,7 +12,7 @@ const SearchResults = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/search_products?search=${query}`);
+        const res = await axios.get(`${config.BASE_URL}/search_products?search=${query}`);
         setProducts(res.data);
       } catch (err) {
         console.log("Error fetching products:", err);
@@ -25,7 +27,7 @@ const SearchResults = () => {
       <div className="product-grid">
         {products.map((p) => (
           <div className="product-card" key={p.id}>
-            <img src={`http://127.0.0.1:8000${p.product_image}`} alt={p.product_name} />
+            <img src={`${config.BASE_URL}${p.product_image}`} alt={p.product_name} />
             <p className="category">{p.product_category?.category_name || 'No Category'}</p>
             <h3 className="product-name">{p.product_name}</h3>
             <div className="rating">
