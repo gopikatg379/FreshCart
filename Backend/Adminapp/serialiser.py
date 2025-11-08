@@ -8,9 +8,19 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ['category_id','category_name','category_image']
 
-    def get_category_image(self, obj):
+    def get_product_image(self, obj):
         if obj.category_image:
-            return obj.category_image.url
+            url = str(obj.category_image)
+            # Fix wrongly prefixed URLs
+            if url.startswith("/media/https%3A"):
+                import urllib.parse
+                url = urllib.parse.unquote(url.replace("/media/", ""))
+            elif url.startswith("/media/"):
+                # If local media files are still there
+                request = self.context.get('request')
+                if request:
+                    url = request.build_absolute_uri(url)
+            return url
         return None
 
 class ProductWeightSerializer(serializers.ModelSerializer):
@@ -29,7 +39,15 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_product_image(self, obj):
         if obj.product_image:
-            return obj.product_image.url
+            url = str(obj.product_image)
+            if url.startswith("/media/https%3A"):
+                import urllib.parse
+                url = urllib.parse.unquote(url.replace("/media/", ""))
+            elif url.startswith("/media/"):
+                request = self.context.get('request')
+                if request:
+                    url = request.build_absolute_uri(url)
+            return url
         return None
 
 class BadgeSerializer(serializers.ModelSerializer):
