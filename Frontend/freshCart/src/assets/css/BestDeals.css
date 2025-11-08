@@ -5,6 +5,7 @@
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 20px;
   align-items: stretch;
+  margin: 0 30px;
 }
   
   .section-title {
