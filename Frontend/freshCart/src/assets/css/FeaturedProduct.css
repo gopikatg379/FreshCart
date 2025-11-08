@@ -9,24 +9,24 @@
     margin-bottom: 20px;
   }
   
-  .product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+ .product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
+    justify-items: center;
   }
   
   .product-card {
-    flex: 1 1 calc(20% - 20px); /* 5 cards per row, accounting for gap */
-    max-width: calc(20% - 20px);
-    background: #fff;
-    border-radius: 12px;
-    padding: 15px;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    text-align: center;
-    border: 1px solid black;
-  }
+  width: 100%;
+  max-width: 200px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  border: 1px solid black;
+}
   
   .badge2 {
     position: absolute;
