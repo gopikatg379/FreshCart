@@ -67,7 +67,7 @@ const BestDeals = () => {
 
   return (
     <div className="best-deals-container">
-      <h2 className="section-title">Daily Best Deals</h2>
+      <h2 className="section-title1">Daily Best Deals</h2>
       <div className="best-deals-wrapper">
         <div className="promo-card">
           <h3>100% Organic Coffee Beans.</h3>
