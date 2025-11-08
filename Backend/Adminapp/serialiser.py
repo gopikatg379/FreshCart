@@ -5,8 +5,6 @@ import urllib.parse
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    category_image = serializers.SerializerMethodField()
-
     class Meta:
         model = Category
         fields = ['category_id', 'category_name', 'category_image']
@@ -21,7 +19,6 @@ class ProductWeightSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     product_category = CategorySerializer(read_only=True)
     product_weight = ProductWeightSerializer(read_only=True)
-    product_image = serializers.SerializerMethodField()
 
     class Meta:
         model = ProductModel
