@@ -6,10 +6,12 @@ import urllib.parse
 
 class CategorySerializer(serializers.ModelSerializer):
     category_image = serializers.SerializerMethodField()
+
     class Meta:
         model = Category
         fields = ['category_id', 'category_name', 'category_image']
-    def get_category_image(self,obj):
+
+    def get_category_image(self, obj):
         # Return the full Cloudinary URL
         if obj.category_image:
             try:
@@ -17,6 +19,7 @@ class CategorySerializer(serializers.ModelSerializer):
             except Exception:
                 return str(obj.category_image)
         return None
+
 
 class ProductWeightSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,6 +31,7 @@ class ProductSerializer(serializers.ModelSerializer):
     product_category = CategorySerializer(read_only=True)
     product_weight = ProductWeightSerializer(read_only=True)
     product_image = serializers.SerializerMethodField()
+
     class Meta:
         model = ProductModel
         fields = ['product_id', 'vendor', 'product_category', 'product_name', 'product_price', 'product_weight',

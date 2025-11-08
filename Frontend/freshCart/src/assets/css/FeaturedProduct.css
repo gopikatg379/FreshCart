@@ -1,6 +1,6 @@
 .featured-container {
     padding: 30px;
-    margin: 0 60px;
+    margin: 0 30px;
   }
   
   .featured-title {
@@ -12,11 +12,13 @@
   .product-grid {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     gap: 20px;
   }
   
   .product-card {
-    width: 200px;
+    flex: 1 1 calc(20% - 20px); /* 5 cards per row, accounting for gap */
+    max-width: calc(20% - 20px);
     background: #fff;
     border-radius: 12px;
     padding: 15px;
