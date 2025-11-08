@@ -4,7 +4,7 @@
     padding: 30px;
     font-family: 'Segoe UI', sans-serif;
     background-color: #fff;
-    margin: 0 30px;
+    margin: 0 auto;
   }
   
   .section-title {
@@ -56,12 +56,12 @@
   
  .product-list1 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 20px;
   justify-items: center; 
 }
   .product-card2 {
-  width: 230px;
+  width: 100%;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
