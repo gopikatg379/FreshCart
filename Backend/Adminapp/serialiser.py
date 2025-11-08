@@ -1,32 +1,27 @@
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from .models import *
+import urllib.parse
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['category_id','category_name','category_image']
+        fields = ['category_id', 'category_name', 'category_image']
 
-    def get_product_image(self, obj):
+    def get_category_image(self, obj):
         if obj.category_image:
             url = str(obj.category_image)
-            # Fix wrongly prefixed URLs
-            if url.startswith("/media/https%3A"):
-                import urllib.parse
-                url = urllib.parse.unquote(url.replace("/media/", ""))
-            elif url.startswith("/media/"):
-                # If local media files are still there
-                request = self.context.get('request')
-                if request:
-                    url = request.build_absolute_uri(url)
+            if url.startswith("/https%3A") or url.startswith("https%3A"):
+                url = urllib.parse.unquote(url.lstrip("/"))
             return url
         return None
+
 
 class ProductWeightSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductWeight
-        fields = ['product_weight_id','product_weight']
+        fields = ['product_weight_id', 'product_weight']
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -35,25 +30,22 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductModel
-        fields = ['product_id','vendor','product_category','product_name','product_price','product_weight','product_image','product_details','average_rating']
+        fields = ['product_id', 'vendor', 'product_category', 'product_name', 'product_price', 'product_weight',
+                  'product_image', 'product_details', 'average_rating']
 
     def get_product_image(self, obj):
         if obj.product_image:
             url = str(obj.product_image)
-            if url.startswith("/media/https%3A"):
-                import urllib.parse
-                url = urllib.parse.unquote(url.replace("/media/", ""))
-            elif url.startswith("/media/"):
-                request = self.context.get('request')
-                if request:
-                    url = request.build_absolute_uri(url)
+            if url.startswith("/https%3A") or url.startswith("https%3A"):
+                url = urllib.parse.unquote(url.lstrip("/"))
             return url
         return None
+
 
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = FeaturedBadge
-        fields = ['badge_id','badge_name']
+        fields = ['badge_id', 'badge_name']
 
 
 class FeaturedSerializer(serializers.ModelSerializer):
@@ -62,7 +54,7 @@ class FeaturedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FeaturedProduct
-        fields = ['featured_product_id','featured_items','our_price','badge']
+        fields = ['featured_product_id', 'featured_items', 'our_price', 'badge']
 
 
 class DealSerializer(serializers.ModelSerializer):
@@ -79,7 +71,7 @@ class CartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cart
-        fields = ['cart_id', 'cart_item', 'quantity', 'total_amount','user']
+        fields = ['cart_id', 'cart_item', 'quantity', 'total_amount', 'user']
 
     def get_total_amount(self, obj):
         return obj.cart_item.product_price * obj.quantity
