@@ -1,31 +1,31 @@
 .featured-container {
     padding: 30px;
-    margin: 0 30px;
+    margin: 0 60px;
   }
   
-  .featured-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
+.featured-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
   
- .product-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    justify-items: center;
-  }
-  
-  .product-card {
-  width: 100%;
-  max-width: 200px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  border: 1px solid black;
+.product-card {
+width: 100%;
+max-width: 300px;
+background: #fff;
+border-radius: 12px;
+padding: 15px;
+position: relative;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+text-align: center;
+border: 1px solid black;
 }
   
   .badge2 {
