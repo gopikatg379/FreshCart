@@ -1,13 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
-from django.conf import settings
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Category(models.Model):
     category_id = models.AutoField(primary_key=True)
     category_name = models.CharField(max_length=50)
-    category_image = models.URLField(max_length=500)
+    category_image = CloudinaryField('image', folder='category')
 
     def __str__(self):
         return self.category_name
@@ -40,7 +39,7 @@ class ProductModel(models.Model):
     product_name = models.CharField(max_length=100)
     product_price = models.IntegerField()
     product_weight = models.ForeignKey(ProductWeight, on_delete=models.CASCADE)
-    product_image = models.URLField(max_length=500)
+    product_image = CloudinaryField('image', folder='products')
     product_details = models.TextField()
     average_rating = models.FloatField(default=0.0)
     embedding = models.BinaryField(null=True, blank=True)
