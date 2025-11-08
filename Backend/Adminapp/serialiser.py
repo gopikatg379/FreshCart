@@ -5,17 +5,11 @@ import urllib.parse
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    category_image = serializers.SerializerMethodField()
+
     class Meta:
         model = Category
         fields = ['category_id', 'category_name', 'category_image']
-
-    def get_category_image(self, obj):
-        if obj.category_image:
-            url = str(obj.category_image)
-            if url.startswith("/https%3A") or url.startswith("https%3A"):
-                url = urllib.parse.unquote(url.lstrip("/"))
-            return url
-        return None
 
 
 class ProductWeightSerializer(serializers.ModelSerializer):
@@ -27,19 +21,13 @@ class ProductWeightSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     product_category = CategorySerializer(read_only=True)
     product_weight = ProductWeightSerializer(read_only=True)
+    product_image = serializers.SerializerMethodField()
 
     class Meta:
         model = ProductModel
         fields = ['product_id', 'vendor', 'product_category', 'product_name', 'product_price', 'product_weight',
                   'product_image', 'product_details', 'average_rating']
 
-    def get_product_image(self, obj):
-        if obj.product_image:
-            url = str(obj.product_image)
-            if url.startswith("/https%3A") or url.startswith("https%3A"):
-                url = urllib.parse.unquote(url.lstrip("/"))
-            return url
-        return None
 
 
 class BadgeSerializer(serializers.ModelSerializer):
