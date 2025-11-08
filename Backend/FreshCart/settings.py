@@ -13,6 +13,9 @@ import os
 from datetime import timedelta
 from pathlib import Path
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,6 +31,12 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
+cloudinary.config(
+    cloud_name='dn1knnudm',
+    api_key='469315845734452',
+    api_secret='GnzVj37XVHcP_pLpRPcd_c3H1d0',
+    secure=True
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -154,10 +163,3 @@ CORS_ALLOWED_ORIGINS = [
     "https://freshcarton.onrender.com"
 ]
 AUTH_USER_MODEL = "Adminapp.CustomModel"
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dn1knnudm',
-    'API_KEY': '469315845734452',
-    'API_SECRET': 'GnzVj37XVHcP_pLpRPcd_c3H1d0'
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
